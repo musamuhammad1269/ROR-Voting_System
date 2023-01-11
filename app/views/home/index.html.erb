@@ -1,0 +1,53 @@
+<div class="container">
+    
+    
+    
+
+
+    <% if current_user %>
+    
+     
+        <h1>Hello <%= current_user.email %></h1>
+        <p>You are a <%= current_user.role %></p>
+   
+        <% if current_user.admin? %>
+            There are <%= User.count %> users in the system.
+            
+        <% end %>
+        <% if current_user.user? %>
+        <p>
+        You have successfully authenticated with your devise account.
+        You are now ready to interact with this application.
+        </p>
+        
+        
+        
+          <strong>Symbol:</strong>
+
+              <% if current_user.image.attached? %>
+                <%= image_tag( current_user.image , size: "100x100" ) %>
+               <% end %>
+            
+      
+
+        
+        
+        <% end %>
+        <%= link_to "Sign out", destroy_user_session_path, 'data-turbo-method': :delete  %>
+    <% else %>
+        <h1><center>Welcome to Voting Machine</center></h1>
+        <p><center>Click the button below to sign up</center></p>
+        
+        <div class="d-grid gap-2 col-6 mx-auto" background-color="red">
+         <button class="btn btn-primary" type="button" style="background-color:white;"><%= link_to "Sign Up!", new_user_registration_path %></button>
+        
+        
+        <br/>
+       
+        </div>
+    <% end %>
+    
+  
+</div>
+
+

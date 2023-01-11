@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @constituency %>
+
+<div>
+  <%= link_to "Edit this constituency", edit_constituency_path(@constituency) %> |
+  <%= link_to "Back to constituencies", constituencies_path %>
+
+  <%= button_to "Destroy this constituency", @constituency, method: :delete %>
+</div>

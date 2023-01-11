@@ -1,0 +1,44 @@
+<div id="<%= dom_id candidate %>">
+  <p>
+    <strong>Partyname:</strong>
+    <%= candidate.partyname %>
+  </p>
+
+  <p>
+    <strong>Constituency:</strong>
+    <%= candidate.constituency.name %>
+  </p>
+
+  <p>
+      <%= link_to like_candidate_path(candidate), method: :get do %>
+        <button type="button" class="btn btn-info" aria-label="Left-Align">
+          
+          Vote
+          <span class="badge"><%= candidate.get_upvotes.size %></span>
+          
+        </button>
+        <% end %>
+        
+
+
+         <%= link_to unlike_candidate_path(candidate), method: :get do %>
+        <button type="button" class="btn btn-info" aria-label="Left-Align">
+          Downvote
+          <span class="badge"><%= candidate.get_upvotes.size %></span>
+        </button>
+        <% end %>
+
+
+
+
+
+
+  </p>
+   
+<%# 
+Used for upvotes %>
+
+<%#   
+  <%= render "candidates/upvote_link", candidate: candidate %> 
+
+</div>

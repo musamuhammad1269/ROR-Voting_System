@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Constituencies</h1>
+
+<div id="constituencies">
+  <% @constituencies.each do |constituency| %>
+    <%= render constituency %>
+    <p>
+      <%= link_to "Show this constituency", constituency %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New constituency", new_constituency_path %>
