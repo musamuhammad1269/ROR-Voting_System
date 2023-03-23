@@ -24217,3 +24217,840 @@ Processing by CandidatesController#index as TURBO_STREAM
 Completed 200 OK in 70ms (Views: 66.7ms | ActiveRecord: 3.1ms | Allocations: 18516)
 
 
+Started GET "/" for ::1 at 2023-03-23 14:29:47 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  Rendered candidates/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 1965)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 171.9ms | Allocations: 18182)
+  Rendered layout layouts/application.html.erb (Duration: 586.5ms | Allocations: 59388)
+Completed 200 OK in 663ms (Views: 597.5ms | ActiveRecord: 1.0ms | Allocations: 72923)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-03-23 14:29:52 +0500
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.6ms | Allocations: 901)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 61.7ms | Allocations: 7429)
+  [1m[36mConstituency Load (0.8ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 9.5ms | Allocations: 1035)
+  Rendered layout layouts/application.html.erb (Duration: 77.6ms | Allocations: 11553)
+Completed 200 OK in 114ms (Views: 79.9ms | ActiveRecord: 2.8ms | Allocations: 29692)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-03-23 14:29:58 +0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"1@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "1@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 333ms (ActiveRecord: 1.1ms | Allocations: 6308)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:29:59 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mUser Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/candidates/index.html.erb:20
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (1.8ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 7], ["variation_digest", "kI2DPUK4Lo0JgFsGK04AVYu+Zt4="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:36
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:49
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 44.5ms | Allocations: 8652)
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 47.0ms | Allocations: 2326)
+  [1m[36mConstituency Load (0.4ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 15.3ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 14.9ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 376.4ms | Allocations: 106482)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.2ms | Allocations: 902)
+  Rendered layout layouts/application.html.erb (Duration: 399.3ms | Allocations: 110473)
+Completed 200 OK in 403ms (Views: 387.5ms | ActiveRecord: 13.6ms | Allocations: 110880)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c71fc7293fbba2590eef27c1f3aeef606c1493d9/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2QzNKbGMybDZaVWtpRFRFMU1IZ3hOVEFoQmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--281532249182a9cd9a1d656f0c960509ebf57fbb/linkedin%20photo.png" for ::1 at 2023-03-23 14:29:59 +0500
+Processing by ActiveStorage::Representations::RedirectController#show as PNG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c71fc7293fbba2590eef27c1f3aeef606c1493d9", "variation_key"=>"[FILTERED]", "filename"=>"linkedin photo"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 7], ["variation_digest", "kI2DPUK4Lo0JgFsGK04AVYu+Zt4="], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 4], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+[36m  Disk Storage (1.2ms) [0m[34mGenerated URL for file at key: zes6sj21vqltghbfd0w7heel14i8 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVZ6Tm5OcU1qRjJjV3gwWjJoaVptUXdkemRvWldWc01UUnBPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14cGJtdGxaR2x1SUhCb2IzUnZMbkJ1WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmJHbHVhMlZrYVc0bE1qQndhRzkwYnk1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM0OjU5LjcxN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--607e90695ae9836e7923db5194bcc5bb9bf24896/linkedin%20photo.png)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVZ6Tm5OcU1qRjJjV3gwWjJoaVptUXdkemRvWldWc01UUnBPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14cGJtdGxaR2x1SUhCb2IzUnZMbkJ1WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmJHbHVhMlZrYVc0bE1qQndhRzkwYnk1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM0OjU5LjcxN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--607e90695ae9836e7923db5194bcc5bb9bf24896/linkedin%20photo.png
+Completed 302 Found in 44ms (ActiveRecord: 1.3ms | Allocations: 7039)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhlbVZ6Tm5OcU1qRjJjV3gwWjJoaVptUXdkemRvWldWc01UUnBPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW14cGJtdGxaR2x1SUhCb2IzUnZMbkJ1WnlJN0lHWnBiR1Z1WVcxbEtqMVZWRVl0T0NjbmJHbHVhMlZrYVc0bE1qQndhRzkwYnk1d2JtY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzVwYldGblpTOXdibWNHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM0OjU5LjcxN1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--607e90695ae9836e7923db5194bcc5bb9bf24896/linkedin%20photo.png" for ::1 at 2023-03-23 14:29:59 +0500
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"linkedin photo"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 324)
+
+
+Started GET "/candidates/3/unlike" for ::1 at 2023-03-23 14:30:11 +0500
+Processing by CandidatesController#downvote as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:84:in `set_candidate'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mActsAsVotable::Vote Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mActsAsVotable::Vote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mActsAsVotable::Vote Update (0.3ms)[0m  [1m[33mUPDATE "votes" SET "vote_flag" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["vote_flag", 0], ["updated_at", "2023-03-23 09:30:11.858236"], ["id", 7]]
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+  [1m[36mTRANSACTION (14.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:23:in `downvote'
+Redirected to http://localhost:3000/candidates
+Completed 302 Found in 95ms (ActiveRecord: 18.8ms | Allocations: 24812)
+
+
+Started GET "/candidates" for ::1 at 2023-03-23 14:30:11 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/candidates/index.html.erb:20
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 7], ["variation_digest", "kI2DPUK4Lo0JgFsGK04AVYu+Zt4="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:36
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:49
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 14.8ms | Allocations: 2332)
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 13.5ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 10.7ms | Allocations: 2310)
+  [1m[36mConstituency Load (0.7ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.1ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 83.4ms | Allocations: 15288)
+  [1m[36mConstituency Load (0.7ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.7ms | Allocations: 891)
+  Rendered layout layouts/application.html.erb (Duration: 94.5ms | Allocations: 19244)
+Completed 200 OK in 98ms (Views: 89.9ms | ActiveRecord: 6.8ms | Allocations: 19626)
+
+
+Started GET "/candidates/1/like" for ::1 at 2023-03-23 14:30:14 +0500
+Processing by CandidatesController#upvote as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:84:in `set_candidate'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["voter_id", 1], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Update (0.5ms)[0m  [1m[33mUPDATE "votes" SET "vote_flag" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["vote_flag", 1], ["updated_at", "2023-03-23 09:30:14.709791"], ["id", 5]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+Redirected to http://localhost:3000/candidates
+Completed 302 Found in 36ms (ActiveRecord: 10.8ms | Allocations: 5661)
+
+
+Started GET "/candidates" for ::1 at 2023-03-23 14:30:14 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mUser Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  ↳ app/views/candidates/index.html.erb:20
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.4ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 7], ["variation_digest", "kI2DPUK4Lo0JgFsGK04AVYu+Zt4="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (1.0ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:36
+  [1m[36mCandidate Load (0.3ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:49
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 15.6ms | Allocations: 2321)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 20.5ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 29.5ms | Allocations: 2310)
+  [1m[36mConstituency Load (0.4ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 40.3ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 139.8ms | Allocations: 15151)
+  [1m[36mConstituency Load (0.4ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 8.5ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 157.3ms | Allocations: 18960)
+Completed 200 OK in 159ms (Views: 147.2ms | ActiveRecord: 11.0ms | Allocations: 19300)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-03-23 14:30:22 +0500
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `add_default_avatar'
+Redirected to http://localhost:3000/
+Completed 302 Found in 57ms (ActiveRecord: 3.2ms | Allocations: 6353)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:30:22 +0500
+Processing by CandidatesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  Rendered candidates/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 380)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.3ms | Allocations: 899)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 4325)
+Completed 200 OK in 22ms (Views: 21.1ms | ActiveRecord: 0.2ms | Allocations: 4761)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-03-23 14:30:24 +0500
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 138)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1588)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.5ms | Allocations: 892)
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 5337)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.1ms | Allocations: 6112)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-03-23 14:30:30 +0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "2@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 313ms (ActiveRecord: 0.3ms | Allocations: 2412)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:30:30 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.4ms | Allocations: 2339)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 35.2ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 18.6ms | Allocations: 2311)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 21.4ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 123.0ms | Allocations: 14596)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 10.0ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 147.5ms | Allocations: 18457)
+Completed 200 OK in 153ms (Views: 146.3ms | ActiveRecord: 4.9ms | Allocations: 18796)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30a2eeaf60fb6651e6ffce6960c2999be1f23f7a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRFRFMU1IZ3hOVEFoQmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--e7d694607c2ba0f471d5a0a7eaa44e43ed979219/christopher-campbell-rDEOVtE7vOs-unsplash.jpg" for ::1 at 2023-03-23 14:30:30 +0500
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBEZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--30a2eeaf60fb6651e6ffce6960c2999be1f23f7a", "variation_key"=>"[FILTERED]", "filename"=>"christopher-campbell-rDEOVtE7vOs-unsplash"}
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 5], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+[36m  Disk Storage (1.3ms) [0m[34mGenerated URL for file at key: 1cz1ehkhcuxjm1kwgv21ggccjm8x (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNV042TVdWb2EyaGpkWGhxYlRGcmQyZDJNakZuWjJOamFtMDRlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVlCcGJteHBibVU3SUdacGJHVnVZVzFsUFNKamFISnBjM1J2Y0dobGNpMWpZVzF3WW1Wc2JDMXlSRVZQVm5SRk4zWlBjeTExYm5Od2JHRnphQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyTm9jbWx6ZEc5d2FHVnlMV05oYlhCaVpXeHNMWEpFUlU5V2RFVTNkazl6TFhWdWMzQnNZWE5vTG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM1OjMwLjg0OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--f1b8cf96fe2432fea163164908039ab8b5dcba26/christopher-campbell-rDEOVtE7vOs-unsplash.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNV042TVdWb2EyaGpkWGhxYlRGcmQyZDJNakZuWjJOamFtMDRlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVlCcGJteHBibVU3SUdacGJHVnVZVzFsUFNKamFISnBjM1J2Y0dobGNpMWpZVzF3WW1Wc2JDMXlSRVZQVm5SRk4zWlBjeTExYm5Od2JHRnphQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyTm9jbWx6ZEc5d2FHVnlMV05oYlhCaVpXeHNMWEpFUlU5V2RFVTNkazl6TFhWdWMzQnNZWE5vTG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM1OjMwLjg0OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--f1b8cf96fe2432fea163164908039ab8b5dcba26/christopher-campbell-rDEOVtE7vOs-unsplash.jpg
+Completed 302 Found in 43ms (ActiveRecord: 0.7ms | Allocations: 4646)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhNV042TVdWb2EyaGpkWGhxYlRGcmQyZDJNakZuWjJOamFtMDRlQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVlCcGJteHBibVU3SUdacGJHVnVZVzFsUFNKamFISnBjM1J2Y0dobGNpMWpZVzF3WW1Wc2JDMXlSRVZQVm5SRk4zWlBjeTExYm5Od2JHRnphQzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyTm9jbWx6ZEc5d2FHVnlMV05oYlhCaVpXeHNMWEpFUlU5V2RFVTNkazl6TFhWdWMzQnNZWE5vTG1wd1p3WTdCbFE2RVdOdmJuUmxiblJmZEhsd1pVa2lEMmx0WVdkbEwycHdaV2NHT3daVU9oRnpaWEoyYVdObFgyNWhiV1U2Q214dlkyRnMiLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM1OjMwLjg0OFoiLCJwdXIiOiJibG9iX2tleSJ9fQ==--f1b8cf96fe2432fea163164908039ab8b5dcba26/christopher-campbell-rDEOVtE7vOs-unsplash.jpg" for ::1 at 2023-03-23 14:30:30 +0500
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"christopher-campbell-rDEOVtE7vOs-unsplash"}
+Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 205)
+
+
+Started GET "/candidates/1/like" for ::1 at 2023-03-23 14:30:40 +0500
+Processing by CandidatesController#upvote as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:84:in `set_candidate'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Update (0.8ms)[0m  [1m[33mUPDATE "votes" SET "vote_flag" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["vote_flag", 1], ["updated_at", "2023-03-23 09:30:40.506862"], ["id", 2]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (17.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+Redirected to http://localhost:3000/candidates
+Completed 302 Found in 54ms (ActiveRecord: 19.7ms | Allocations: 5710)
+
+
+Started GET "/candidates" for ::1 at 2023-03-23 14:30:40 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.6ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 15.4ms | Allocations: 2320)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 11.4ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 11.1ms | Allocations: 2310)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 10.0ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 78.9ms | Allocations: 14401)
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.8ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 94.2ms | Allocations: 18215)
+Completed 200 OK in 98ms (Views: 92.4ms | ActiveRecord: 4.8ms | Allocations: 18555)
+
+
+Started GET "/candidates/2/like" for ::1 at 2023-03-23 14:30:43 +0500
+Processing by CandidatesController#upvote as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:84:in `set_candidate'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Update (0.8ms)[0m  [1m[33mUPDATE "votes" SET "vote_flag" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["vote_flag", 1], ["updated_at", "2023-03-23 09:30:44.003448"], ["id", 3]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+Redirected to http://localhost:3000/candidates
+Completed 302 Found in 35ms (ActiveRecord: 14.1ms | Allocations: 5665)
+
+
+Started GET "/candidates" for ::1 at 2023-03-23 14:30:44 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.6ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (1.0ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (1.6ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 14.9ms | Allocations: 2320)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 8.6ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 7.5ms | Allocations: 2310)
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.2ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 72.2ms | Allocations: 14405)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.7ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 86.3ms | Allocations: 18253)
+Completed 200 OK in 90ms (Views: 81.5ms | ActiveRecord: 6.3ms | Allocations: 18593)
+
+
+Started GET "/candidates/3/like" for ::1 at 2023-03-23 14:30:50 +0500
+Processing by CandidatesController#upvote as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:84:in `set_candidate'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? LIMIT ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."voter_id" = ? AND "votes"."vote_scope" IS NULL AND "votes"."voter_type" = ? ORDER BY "votes"."id" DESC LIMIT ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["voter_id", 2], ["voter_type", "User"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mActsAsVotable::Vote Update (0.8ms)[0m  [1m[33mUPDATE "votes" SET "vote_flag" = ?, "updated_at" = ? WHERE "votes"."id" = ?[0m  [["vote_flag", 1], ["updated_at", "2023-03-23 09:30:50.943490"], ["id", 6]]
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+  [1m[36mTRANSACTION (16.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/candidates_controller.rb:17:in `upvote'
+Redirected to http://localhost:3000/candidates
+Completed 302 Found in 42ms (ActiveRecord: 18.2ms | Allocations: 5665)
+
+
+Started GET "/candidates" for ::1 at 2023-03-23 14:30:50 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.6ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 10.0ms | Allocations: 2321)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 9.4ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 11.6ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 14.5ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 72.6ms | Allocations: 14410)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 7.5ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 94.4ms | Allocations: 18219)
+Completed 200 OK in 98ms (Views: 92.0ms | ActiveRecord: 3.6ms | Allocations: 18559)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-03-23 14:30:53 +0500
+Processing by Users::SessionsController#new as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 6ms (ActiveRecord: 0.1ms | Allocations: 1435)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:30:53 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 9], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 14.8ms | Allocations: 2321)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.7ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.3ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 10.2ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 87.7ms | Allocations: 14418)
+  [1m[36mConstituency Load (0.6ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 5.1ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 102.7ms | Allocations: 18226)
+Completed 200 OK in 105ms (Views: 99.7ms | ActiveRecord: 4.3ms | Allocations: 18566)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-03-23 14:30:55 +0500
+Processing by Users::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:32:in `add_default_avatar'
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.3ms | Allocations: 2627)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:30:55 +0500
+Processing by CandidatesController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  Rendered candidates/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 310)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 9.2ms | Allocations: 887)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 4075)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.1ms | Allocations: 4419)
+
+
+Started GET "/users/sign_in" for ::1 at 2023-03-23 14:30:58 +0500
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 138)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1518)
+  [1m[36mConstituency Load (0.5ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 5.2ms | Allocations: 892)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 5298)
+Completed 200 OK in 19ms (Views: 17.0ms | ActiveRecord: 0.5ms | Allocations: 6067)
+
+
+Started POST "/users/sign_in" for ::1 at 2023-03-23 14:31:05 +0500
+Processing by Users::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"3@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "3@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 298ms (ActiveRecord: 0.1ms | Allocations: 2368)
+
+
+Started GET "/" for ::1 at 2023-03-23 14:31:05 +0500
+Processing by CandidatesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 13], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.1ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates"[0m
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.6ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 12.5ms | Allocations: 2320)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 2], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 11.2ms | Allocations: 2308)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 3], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 8.9ms | Allocations: 2308)
+  [1m[36mConstituency Load (1.0ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 20.8ms | Allocations: 2308)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 78.7ms | Allocations: 14421)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 4.5ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 97.6ms | Allocations: 18254)
+Completed 200 OK in 101ms (Views: 93.4ms | ActiveRecord: 5.8ms | Allocations: 18593)
+
+
+Started GET "/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c9bd3b97ff229108751c44ff9e6dda3c0240e30/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2QzNKbGMybDZaVWtpRFRFMU1IZ3hOVEFoQmpzR1ZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--e7d694607c2ba0f471d5a0a7eaa44e43ed979219/sergio-de-paula-c_GmwfHBDzk-unsplash.jpg" for ::1 at 2023-03-23 14:31:06 +0500
+Processing by ActiveStorage::Representations::RedirectController#show as JPEG
+  Parameters: {"signed_blob_id"=>"eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8c9bd3b97ff229108751c44ff9e6dda3c0240e30", "variation_key"=>"[FILTERED]", "filename"=>"sergio-de-paula-c_GmwfHBDzk-unsplash"}
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 13], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 7], ["record_type", "ActiveStorage::VariantRecord"], ["name", "image"], ["LIMIT", 1]]
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+[36m  Disk Storage (0.9ms) [0m[34mGenerated URL for file at key: n90lpvr2a8jmz0862amdn1x8gim8 (http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiamt3YkhCMmNqSmhPR3B0ZWpBNE5qSmhiV1J1TVhnNFoybHRPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpZTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGNtZHBieTFrWlMxd1lYVnNZUzFqWDBkdGQyWklRa1I2YXkxMWJuTndiR0Z6YUM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM05sY21kcGJ5MWtaUzF3WVhWc1lTMWpYMGR0ZDJaSVFrUjZheTExYm5Od2JHRnphQzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM2OjA2LjE2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bbf1cf95a305ea0faa6d26fff55e853603223727/sergio-de-paula-c_GmwfHBDzk-unsplash.jpg)[0m
+Redirected to http://localhost:3000/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiamt3YkhCMmNqSmhPR3B0ZWpBNE5qSmhiV1J1TVhnNFoybHRPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpZTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGNtZHBieTFrWlMxd1lYVnNZUzFqWDBkdGQyWklRa1I2YXkxMWJuTndiR0Z6YUM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM05sY21kcGJ5MWtaUzF3WVhWc1lTMWpYMGR0ZDJaSVFrUjZheTExYm5Od2JHRnphQzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM2OjA2LjE2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bbf1cf95a305ea0faa6d26fff55e853603223727/sergio-de-paula-c_GmwfHBDzk-unsplash.jpg
+Completed 302 Found in 37ms (ActiveRecord: 1.2ms | Allocations: 4600)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiamt3YkhCMmNqSmhPR3B0ZWpBNE5qSmhiV1J1TVhnNFoybHRPQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpZTJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW5ObGNtZHBieTFrWlMxd1lYVnNZUzFqWDBkdGQyWklRa1I2YXkxMWJuTndiR0Z6YUM1cWNHY2lPeUJtYVd4bGJtRnRaU285VlZSR0xUZ25KM05sY21kcGJ5MWtaUzF3WVhWc1lTMWpYMGR0ZDJaSVFrUjZheTExYm5Od2JHRnphQzVxY0djR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnOXBiV0ZuWlM5cWNHVm5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIzLTAzLTIzVDA5OjM2OjA2LjE2M1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--bbf1cf95a305ea0faa6d26fff55e853603223727/sergio-de-paula-c_GmwfHBDzk-unsplash.jpg" for ::1 at 2023-03-23 14:31:06 +0500
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"sergio-de-paula-c_GmwfHBDzk-unsplash"}
+Completed 200 OK in 3ms (ActiveRecord: 0.0ms | Allocations: 190)
+
+
+Started GET "/candidates?constituency=Punjab" for ::1 at 2023-03-23 14:31:27 +0500
+Processing by CandidatesController#index as HTML
+  Parameters: {"constituency"=>"Punjab"}
+  [1m[36mConstituency Load (0.3ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."name" = ? LIMIT ?[0m  [["name", "Punjab"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 13], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.4ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.6ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."constituency_id" = ?[0m  [["constituency_id", 1]]
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 1], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 7.2ms | Allocations: 2320)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 28.2ms | Allocations: 7308)
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 2.4ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 11122)
+Completed 200 OK in 45ms (Views: 37.2ms | ActiveRecord: 2.8ms | Allocations: 12321)
+
+
+Started GET "/candidates?constituency=karachi" for ::1 at 2023-03-23 14:31:35 +0500
+Processing by CandidatesController#index as HTML
+  Parameters: {"constituency"=>"karachi"}
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."name" = ? LIMIT ?[0m  [["name", "karachi"], ["LIMIT", 1]]
+  ↳ app/controllers/candidates_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering candidates/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/candidates/index.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:22:in `avatar_thumbnail'
+  [1m[36mActiveStorage::Blob Load (0.1ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mActiveStorage::VariantRecord Load (0.1ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = ? AND "active_storage_variant_records"."variation_digest" = ? LIMIT ?[0m  [["blob_id", 13], ["variation_digest", "9MJcvjPWtysU0maismzfI4dHb8w="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `avatar_thumbnail'
+  [1m[36mConstituency Load (0.1ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies"[0m
+  ↳ app/views/candidates/index.html.erb:99
+  [1m[36mCandidate Load (0.2ms)[0m  [1m[34mSELECT "candidates".* FROM "candidates" WHERE "candidates"."constituency_id" = ?[0m  [["constituency_id", 6]]
+  ↳ app/views/candidates/index.html.erb:111
+  [1m[36mConstituency Load (0.4ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:9
+  [1m[36mActsAsVotable::Vote Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:17
+  [1m[36mCACHE ActsAsVotable::Vote Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ?[0m  [["votable_id", 4], ["votable_type", "Candidate"], ["vote_flag", 1]]
+  ↳ app/views/candidates/_candidate.html.erb:27
+  Rendered candidates/_candidate.html.erb (Duration: 8.8ms | Allocations: 2320)
+  Rendered candidates/index.html.erb within layouts/application (Duration: 28.5ms | Allocations: 7274)
+  [1m[36mConstituency Load (0.2ms)[0m  [1m[34mSELECT "constituencies".* FROM "constituencies" WHERE "constituencies"."display_in_navbar" = ?[0m  [["display_in_navbar", 1]]
+  ↳ app/views/shared/_navbar.html.erb:16
+  Rendered shared/_navbar.html.erb (Duration: 3.4ms | Allocations: 890)
+  Rendered layout layouts/application.html.erb (Duration: 38.7ms | Allocations: 11080)
+Completed 200 OK in 43ms (Views: 38.7ms | ActiveRecord: 1.9ms | Allocations: 11904)
+
+
